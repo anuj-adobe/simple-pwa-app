@@ -8,9 +8,10 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('offline-video-pwa-v1').then(function(cache) {
       return cache.addAll([
-        '/simple-pwa-app',
-        '/simple-pwa-app/index.html',
-        '/simple-pwa-app/save-offline-resources.js'
+        '/',
+        '/index.html',
+        '/save-offline-resources.js',
+        '/manifest.json'
       ]);
     })
   );
@@ -25,7 +26,7 @@ self.addEventListener('fetch', function(event) {
   }
 
   const url = event.request.url;
-  if (url.endsWith('/simple-pwa-app/') || url.endsWith('.js') || url.endsWith('.html')) {
+  if (url.endsWith('/') || url.endsWith('.js') || url.endsWith('.html') || url.endsWith('.json')) {
     event.respondWith(
       caches.match(event.request).then(function(response) {
         return response || fetch(event.request);

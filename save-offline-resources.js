@@ -12,7 +12,7 @@ if ('serviceWorker' in navigator) {
 
 const dbName = 'ScreensFileDB';
 const storeName = 'FileStore';
-const docRoot = '/channels/_shared/www/simple-pwa-app/';
+const docRoot = '/channels/_shared/www/';
 const offlineResources = ['video.mp4', 'icon-192.png'];
 const indexedDBKey = (resourceUrl) => {
   return docRoot ? docRoot + resourceUrl : resourceUrl;
