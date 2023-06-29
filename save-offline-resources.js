@@ -14,13 +14,13 @@ const docRoot = '/channels/_shared/www';
 const offlineResources = ['https://anuj-assets.netlify.app/content/dam/videos/ToyotaVideo.mp4', 'https://anuj-assets.netlify.app/content/dam/images/ToyotaImage.jpg'];
 
 const getPath = (resourceUrl) => {
-	const url = new URL(resourceUrl);
-	return url.pathname;
+    const url = new URL(resourceUrl);
+    return url.pathname;
 }
 
 const indexedDBKey = (resourceUrl) => {
-	const path = getPath(resourceUrl);
-	return docRoot ? docRoot + path : path;
+    const path = getPath(resourceUrl);
+    return docRoot ? docRoot + path : path;
 }
 
 // Check if the browser supports IndexedDB
@@ -51,14 +51,14 @@ if ('indexedDB' in window) {
           if (!blob) {
             // The video is not in the IndexedDB, fetch and store it
             fetchAndStoreOfflineResources(request, resourceUrl).then(() => {
-				//setting the src reload video and image element
-				let element;
-				if (resourceUrl.endsWith('.mp4')) {
-					element = document.getElementById('offline-video');
-				} else {
-					element = document.getElementById('offline-image');
-				}
-				element.src = getPath(resourceUrl);
+                //setting the src reload video and image element
+                let element;
+                if (resourceUrl.endsWith('.mp4')) {
+                    element = document.getElementById('offline-video');
+                } else {
+                    element = document.getElementById('offline-image');
+                }
+                element.src = getPath(resourceUrl);
             });
           }
         };

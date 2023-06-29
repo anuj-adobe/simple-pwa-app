@@ -11,23 +11,23 @@ const applicationFiles = ['/',
                         '/icon-512.png'];
 
 self.addEventListener('install', function(event) {
-	console.log(`[SW] Service worker version installed`);
-	event.waitUntil(
-		caches.delete('offline-video-pwa-v1')
-		.then(() => {
-			return caches.open('offline-video-pwa-v1')
-		})
-		.then(function(cache) {
-			return cache.addAll(applicationFiles);
+    console.log(`[SW] Service worker version installed`);
+    event.waitUntil(
+        caches.delete('offline-video-pwa-v1')
+        .then(() => {
+            return caches.open('offline-video-pwa-v1')
         })
-	);
-	self.skipWaiting();
+        .then(function(cache) {
+            return cache.addAll(applicationFiles);
+        })
+    );
+    self.skipWaiting();
 });
 
 // Handle the activate event
 self.addEventListener('activate', (event) => {
     console.log(`[SW] Service worker version activated`);
-	event.waitUntil(self.clients.claim());
+    event.waitUntil(self.clients.claim());
 });
 
 
