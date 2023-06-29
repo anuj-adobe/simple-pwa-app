@@ -3,18 +3,31 @@ const FILE_STORE = 'FileStore';
 let db = null;
 const docRoot = '/channels/_shared/www';
 
+const applicationFiles = ['/',
+                        '/index.html',
+                        '/save-offline-resources.js',
+                        '/manifest.json',
+                        '/icon-192.png',
+                        '/icon-512.png'];
 
 self.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open('offline-video-pwa-v1').then(function(cache) {
-      return cache.addAll([
-        '/',
-        '/index.html',
-        '/save-offline-resources.js',
-        '/manifest.json'
-      ]);
-    })
-  );
+	console.log(`[SW] Service worker version installed`);
+	event.waitUntil(
+		caches.delete('offline-video-pwa-v1')
+		.then(() => {
+			return caches.open('offline-video-pwa-v1')
+		})
+		.then(function(cache) {
+			return cache.addAll(applicationFiles);
+        })
+	);
+	self.skipWaiting();
+});
+
+// Handle the activate event
+self.addEventListener('activate', (event) => {
+    console.log(`[SW] Service worker version activated`);
+	event.waitUntil(self.clients.claim());
 });
 
 
@@ -26,7 +39,8 @@ self.addEventListener('fetch', function(event) {
   }
 
   const url = event.request.url;
-  if (url.endsWith('/') || url.endsWith('.js') || url.endsWith('.html') || url.endsWith('.json')) {
+  let path = new URL(url).pathname;
+  if (applicationFiles.some((file) => path.endsWith(file))) {
     event.respondWith(
       caches.match(event.request).then(function(response) {
         return response || fetch(event.request);
