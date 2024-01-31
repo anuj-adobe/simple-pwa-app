@@ -11,6 +11,7 @@ if ('serviceWorker' in navigator) {
 const dbName = 'ScreensFileDB';
 const storeName = 'FileStore';
 const docRoot = '/channels/_shared/www';
+
 const offlineResources = [
   "https://publish-p11055-e20059.adobeaemcloud.com/etc.clientlibs/screens/clientlibs/sequencechannel-embed.min.css",
   "https://publish-p11055-e20059.adobeaemcloud.com/etc.clientlibs/screens/clientlibs/sequencechannel-embed.min.js",
@@ -28,6 +29,9 @@ const offlineResources = [
 ];
 
 // Now, 'urls' is an array containing all the specified URLs.
+
+
+// const offlineResources = ['https://anuj-assets.netlify.app/content/dam/videos/ToyotaVideo.mp4', 'https://anuj-assets.netlify.app/content/dam/images/ToyotaImage.jpg', 'https://anuj-assets.netlify.app/content/dam/videos/fire.mp4'];
 
 
 const getPath = (resourceUrl) => {
