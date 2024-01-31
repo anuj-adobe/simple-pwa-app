@@ -11,7 +11,24 @@ if ('serviceWorker' in navigator) {
 const dbName = 'ScreensFileDB';
 const storeName = 'FileStore';
 const docRoot = '/channels/_shared/www';
-const offlineResources = ['https://anuj-assets.netlify.app/content/dam/videos/ToyotaVideo.mp4', 'https://anuj-assets.netlify.app/content/dam/images/ToyotaImage.jpg'];
+const offlineResources = [
+  "https://publish-p11055-e20059.adobeaemcloud.com/etc.clientlibs/screens/clientlibs/sequencechannel-embed.min.css",
+  "https://publish-p11055-e20059.adobeaemcloud.com/etc.clientlibs/screens/clientlibs/sequencechannel-embed.min.js",
+  "https://publish-p11055-e20059.adobeaemcloud.com/content/screens/satnam_project/channels/offline_probot.html",
+  "https://publish-p11055-e20059.adobeaemcloud.com/content/dam/sgpools/Coke-football.jpeg",
+  "https://publish-p11055-e20059.adobeaemcloud.com/content/dam/videos/AdobeStock_502925560_Video_HD_Preview.mov/_jcr_content/renditions/screens-fullhd.mp4",
+  "https://publish-p11055-e20059.adobeaemcloud.com/content/dam/ravverma/AdobeStock_544453095_Video_HD_Preview.mov/_jcr_content/renditions/screens-fullhd.mp4",
+  "https://publish-p11055-e20059.adobeaemcloud.com/content/dam/dontdelete-insideadobe/BOSSxPhipps_003_9x16_UHD.mp4/_jcr_content/renditions/original",
+  "https://publish-p11055-e20059.adobeaemcloud.com/etc.clientlibs/toggles.json",
+  "https://publish-p11055-e20059.adobeaemcloud.com/etc.clientlibs/clientlibs/granite/jquery.lc-7842899024219bcbdb5e72c946870b79-lc.min.js",
+  "https://publish-p11055-e20059.adobeaemcloud.com/etc.clientlibs/clientlibs/granite/utils.lc-e7bf340a353e643d198b25d0c8ccce47-lc.min.js",
+  "https://publish-p11055-e20059.adobeaemcloud.com/etc.clientlibs/clientlibs/granite/jquery/granite.lc-543d214c88dfa6f4a3233b630c82d875-lc.min.js",
+  "https://publish-p11055-e20059.adobeaemcloud.com/etc.clientlibs/foundation/clientlibs/jquery.lc-dd9b395c741ce2784096e26619e14910-lc.min.js",
+  "https://publish-p11055-e20059.adobeaemcloud.com/etc.clientlibs/foundation/clientlibs/shared.lc-41f79c8a45bb1766981ec4ca82d7e0e6-lc.min.js"
+];
+
+// Now, 'urls' is an array containing all the specified URLs.
+
 
 const getPath = (resourceUrl) => {
     const url = new URL(resourceUrl);
