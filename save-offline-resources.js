@@ -11,7 +11,7 @@ if ('serviceWorker' in navigator) {
 const dbName = 'ScreensFileDB';
 const storeName = 'FileStore';
 const docRoot = '/channels/_shared/www';
-const offlineResources = ['https://anuj-assets.netlify.app/content/dam/videos/ToyotaVideo.mp4', 'https://anuj-assets.netlify.app/content/dam/images/ToyotaImage.jpg'];
+const offlineResources = ['https://anuj-assets.netlify.app/content/dam/videos/ToyotaVideo.mp4', 'https://anuj-assets.netlify.app/content/dam/images/ToyotaImage.jpg', 'https://anuj-assets.netlify.app/content/dam/videos/fire.mp4'];
 
 const getPath = (resourceUrl) => {
     const url = new URL(resourceUrl);
