@@ -18,7 +18,7 @@ const offlineResources = [
   "https://anuj-assets.netlify.app/content/screens/satnam_project/channels/offline_probot.html",
   "https://anuj-assets.netlify.app/content/dam/sgpools/Coke-football.jpeg",
   "https://anuj-assets.netlify.app/content/dam/videos/AdobeStock_502925560_Video_HD_Preview.mov/_jcr_content/renditions/screens-fullhd.mp4",
-  "https://anuj-assets.netlify.app/content/dam/ravverma/AdobeStock_544453095_Video_HD_Preview.mov/_jcr_content/renditions/screens-fullhd.mp4",
+  "https://anuj-assets.netlify.app/content/dam/videos/ravverma/AdobeStock_544453095_Video_HD_Preview.mov/_jcr_content/renditions/screens-fullhd.mp4",
   "https://anuj-assets.netlify.app/content/dam/dontdelete-insideadobe/BOSSxPhipps_003_9x16_UHD.mp4/_jcr_content/renditions/original",
   "https://anuj-assets.netlify.app/etc.clientlibs/toggles.json",
   "https://anuj-assets.netlify.app/etc.clientlibs/clientlibs/granite/jquery.lc-7842899024219bcbdb5e72c946870b79-lc.min.js",
