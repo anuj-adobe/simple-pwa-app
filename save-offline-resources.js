@@ -15,7 +15,6 @@ const docRoot = '/channels/_shared/www';
 const offlineResources = [
   "https://anuj-assets.netlify.app/etc.clientlibs/screens/clientlibs/sequencechannel-embed.min.css",
   "https://anuj-assets.netlify.app/etc.clientlibs/screens/clientlibs/sequencechannel-embed.min.js",
-  "https://anuj-assets.netlify.app/content/screens/satnam_project/channels/offline_probot.html",
   "https://anuj-assets.netlify.app/content/dam/sgpools/Coke-football.jpeg",
   "https://anuj-assets.netlify.app/content/dam/videos/AdobeStock_502925560_Video_HD_Preview.mov/_jcr_content/renditions/screens-fullhd.mp4",
   "https://anuj-assets.netlify.app/content/dam/videos/ravverma/AdobeStock_544453095_Video_HD_Preview.mov/_jcr_content/renditions/screens-fullhd.mp4",
@@ -62,6 +61,8 @@ if ('indexedDB' in window) {
     const transaction = db.transaction(storeName, 'readwrite');
     const store = transaction.objectStore(storeName);
 
+    let allResourcesSaved = true; // Track if all resources are saved
+    let downloadResourceCount = offlineResources.length;
     offlineResources.forEach(resourceUrl => {
         // Check if the video is already in the IndexedDB
         const getRequest = store.get(indexedDBKey(resourceUrl));
@@ -70,17 +71,34 @@ if ('indexedDB' in window) {
           const blob = event.target.result;
 
           if (!blob) {
+            allResourcesSaved = false; // Resource not saved if blob doesn't exist
             // The video is not in the IndexedDB, fetch and store it
             fetchAndStoreOfflineResources(request, resourceUrl).then(() => {
                 //setting the src reload video and image element
-                let element;
-                if (resourceUrl.endsWith('.mp4')) {
-                    element = document.getElementById('offline-video');
-                } else {
-                    element = document.getElementById('offline-image');
+                // let element;
+                // if (resourceUrl.endsWith('.mp4')) {
+                //     element = document.getElementById('offline-video');
+                // } else {
+                //     element = document.getElementById('offline-image');
+                // }
+                // element.src = getPath(resourceUrl);
+                console.log(`${resourceUrl} downloaded`);
+                downloadResourceCount--;
+                if (downloadResourceCount === 0) {
+                  allResourcesSaved = true;
+                  document.getElementById('loading-message').style.display = 'none';
+                  document.getElementById('channel-frame').style.display = 'block';
+                  document.location.reload();
                 }
-                element.src = getPath(resourceUrl);
             });
+          }  else {
+            console.log(`${resourceUrl} exists`);
+            downloadResourceCount--;
+            if (downloadResourceCount === 0) {
+              allResourcesSaved = true;
+              document.getElementById('loading-message').style.display = 'none';
+              document.getElementById('channel-frame').style.display = 'block';
+            }
           }
         };
 
