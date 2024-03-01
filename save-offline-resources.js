@@ -89,7 +89,7 @@ if ('indexedDB' in window) {
                   document.getElementById('loading-message').style.display = 'none';
                   let channelFrame = document.getElementById('channel-frame');
                   channelFrame.style.display = 'block';
-                  channelFrame.load(channelFrame.src);
+                  channelFrame.src = channelFrame.src;
                 }
             });
           }  else {
