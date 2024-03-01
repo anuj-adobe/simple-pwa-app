@@ -87,8 +87,9 @@ if ('indexedDB' in window) {
                 if (downloadResourceCount === 0) {
                   allResourcesSaved = true;
                   document.getElementById('loading-message').style.display = 'none';
-                  document.getElementById('channel-frame').style.display = 'block';
-                  document.location.reload();
+                  let channelFrame = document.getElementById('channel-frame');
+                  channelFrame.style.display = 'block';
+                  channelFrame.load(channelFrame.src);
                 }
             });
           }  else {
